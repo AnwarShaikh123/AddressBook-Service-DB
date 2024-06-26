@@ -164,4 +164,19 @@ mysql> SELECT city,state, COUNT(*) AS Address_Count FROM address_book GROUP BY c
 +------------+-------------+---------------+
 1 row in set (0.05 sec)
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+UC8-Ability to retrieve entries sorted alphabetically by Person’s name for a given city given city
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mysql> SELECT * FROM address_book WHERE city = "NaviMumbai" ORDER BY firstname;
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+
+| id | firstname | lastname | Address  | City       | state       | zip     | phonenumber | email           |
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+
+|  1 | Anwar     | Shaikh   | Airoli   | NaviMumbai | Maharashtra | 4000708 | 2081399882  | Anwar@gmail.com |
+|  4 | Priya     | Singh    | Ghansoli | NaviMumbai | Maharashtra | 400706  | 2514389612  | priya@gmail.com |
+|  5 | Rhea      | Kapoor   | Nerul    | NaviMumbai | Maharashtra | 400709  | 2514389231  | rhea@gmail.com  |
+|  2 | Saif      | Sharma   | Thane    | NaviMumbai | Maharashtra | 4000703 | 2765321371  | saif@gmail.com  |
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+
+4 rows in set (0.00 sec)
+
 
