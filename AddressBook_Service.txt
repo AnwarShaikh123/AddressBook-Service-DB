@@ -96,3 +96,33 @@ mysql> select*from address_book;
 |  5 | Rhea      | Kapoor   | Nerul    | NaviMumbai | Maharashtra | 400709  | 2514389231  | rhea@gmail.com   |
 +----+-----------+----------+----------+------------+-------------+---------+-------------+------------------+
 5 rows in set (0.00 sec)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	UC5-Ability to delete a person using person's name
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mysql> select*from address_book;
++----+-----------+----------+----------+------------+-------------+---------+-------------+------------------+
+| id | firstname | lastname | Address  | City       | state       | zip     | phonenumber | email            |
++----+-----------+----------+----------+------------+-------------+---------+-------------+------------------+
+|  1 | Anwar     | Shaikh   | Airoli   | NaviMumbai | Maharashtra | 4000708 | 2081399882  | Anwar@gmail.com  |
+|  2 | Saif      | Sharma   | Thane    | NaviMumbai | Maharashtra | 4000703 | 2765321371  | saif@gmail.com   |
+|  3 | Sachin    | Rawat    | Kalwa    | NaviMumbai | Maharashtra | 410106  | 2765321206  | Sachin@gmail.com |
+|  4 | Priya     | Singh    | Ghansoli | NaviMumbai | Maharashtra | 400706  | 2514389612  | priya@gmail.com  |
+|  5 | Rhea      | Kapoor   | Nerul    | NaviMumbai | Maharashtra | 400709  | 2514389231  | rhea@gmail.com   |
++----+-----------+----------+----------+------------+-------------+---------+-------------+------------------+
+5 rows in set (0.00 sec)
+
+mysql> Delete from address_book where  firstname='Sachin';
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select*from address_book;
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+
+| id | firstname | lastname | Address  | City       | state       | zip     | phonenumber | email           |
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+
+|  1 | Anwar     | Shaikh   | Airoli   | NaviMumbai | Maharashtra | 4000708 | 2081399882  | Anwar@gmail.com |
+|  2 | Saif      | Sharma   | Thane    | NaviMumbai | Maharashtra | 4000703 | 2765321371  | saif@gmail.com  |
+|  4 | Priya     | Singh    | Ghansoli | NaviMumbai | Maharashtra | 400706  | 2514389612  | priya@gmail.com |
+|  5 | Rhea      | Kapoor   | Nerul    | NaviMumbai | Maharashtra | 400709  | 2514389231  | rhea@gmail.com  |
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+
+4 rows in set (0.00 sec)
