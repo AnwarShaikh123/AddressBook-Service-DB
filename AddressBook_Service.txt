@@ -17,3 +17,26 @@ mysql> show databases;
 | sys                 |
 +---------------------+
 6 rows in set (0.04 sec)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  UC2 - Ability to create a AddressBook Table with first and last names, address, city,state, zip, phone number and email as its attributes
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mysql> select*from address_book;
+Empty set (0.01 sec)
+
+mysql> DESC address_book;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int          | NO   | PRI | NULL    | auto_increment |
+| firstname   | varchar(255) | NO   |     | NULL    |                |
+| lastname    | varchar(255) | NO   |     | NULL    |                |
+| Address     | varchar(255) | YES  |     | NULL    |                |
+| City        | varchar(255) | YES  |     | NULL    |                |
+| state       | varchar(255) | YES  |     | NULL    |                |
+| zip         | varchar(255) | YES  |     | NULL    |                |
+| phonenumber | varchar(255) | YES  |     | NULL    |                |
+| email       | varchar(255) | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+9 rows in set (0.09 sec)
