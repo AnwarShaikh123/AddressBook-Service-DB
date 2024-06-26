@@ -40,3 +40,29 @@ mysql> DESC address_book;
 | email       | varchar(255) | YES  |     | NULL    |                |
 +-------------+--------------+------+-----+---------+----------------+
 9 rows in set (0.09 sec)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	UC3-Ability to insert new Contacts to Address Book
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+mysql> INSERT INTO address_book(firstname,lastname,Address,City,state,zip,phonenumber,email)VALUES
+    -> ('Anwar','Shaikh','Airoli','NaviMumbai','Maharashtra','4000708','2765325278','Anwar@gmail.com'),
+    -> ('Saif','Sharma','Vashi','NaviMumbai','Maharashtra','4000703','2765321371','saif@gmail.com'),
+    -> ('Sachin','Rawat','Panvel','NaviMumbai','Maharashtra','410106','2765321206','Sachin@gmail.com'),
+    -> ('Priya','Singh','Ghansoli','NaviMumbai','Maharashtra','400706','2514389612','priya@gmail.com'),
+    -> ('Rhea','Kapoor','Nerul','NaviMumbai','Maharashtra','400709','2514389231','rhea@gmail.com');
+Query OK, 5 rows affected (0.26 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select*from address_book;
++----+-----------+----------+----------+------------+-------------+---------+-------------+------------------+
+| id | firstname | lastname | Address  | City       | state       | zip     | phonenumber | email            |
++----+-----------+----------+----------+------------+-------------+---------+-------------+------------------+
+|  1 | Anwar     | Shaikh   | Airoli   | NaviMumbai | Maharashtra | 4000708 | 2765325278  | Anwar@gmail.com  |
+|  2 | Saif      | Sharma   | Vashi    | NaviMumbai | Maharashtra | 4000703 | 2765321371  | saif@gmail.com   |
+|  3 | Sachin    | Rawat    | Panvel   | NaviMumbai | Maharashtra | 410106  | 2765321206  | Sachin@gmail.com |
+|  4 | Priya     | Singh    | Ghansoli | NaviMumbai | Maharashtra | 400706  | 2514389612  | priya@gmail.com  |
+|  5 | Rhea      | Kapoor   | Nerul    | NaviMumbai | Maharashtra | 400709  | 2514389231  | rhea@gmail.com   |
++----+-----------+----------+----------+------------+-------------+---------+-------------+------------------+
+5 rows in set (0.00 sec)
