@@ -262,6 +262,37 @@ mysql> SELECT type,COUNT(type) FROM address_book GROUP BY type;
 +------------+-------------+
 3 rows in set (0.02 sec)
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                    UC11 - Ability to add person to both Friend and Family
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ INSERT INTO address_book (first_name,last_name,address,city,state,zip,phone_no,email_id,type) VALUES ("Raj","Patil","Vashi","Navi Mumbai","MH",400701,9167328904,"raj143@gmail.com","Family");
+ERROR 1054 (42S22): Unknown column 'first_name' in 'field list'
+mysql>  INSERT INTO address_book (firstname,lastname,address,city,state,zip,phonenumber,email,type) VALUES ("Kunal","Khair","Panvel","Navi Mumbai","Maharashtra",400704,9967324704,"kunal@gmail.com","Family");
+Query OK, 1 row affected (0.90 sec)
+
+mysql>  INSERT INTO address_book (firstname,lastname,address,city,state,zip,phonenumber,email,type) VALUES ("Kunal","Khair","Panvel","Navi Mumbai","Maharashtra",400704,9967324704,"kunal@gmail.com","friends");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> Select*from address_book;
++----+-----------+----------+----------+-------------+-------------+---------+-------------+-----------------+---------+------------+
+| id | firstname | lastname | Address  | City        | state       | zip     | phonenumber | email           | type_id | type       |
++----+-----------+----------+----------+-------------+-------------+---------+-------------+-----------------+---------+------------+
+|  1 | Anwar     | Shaikh   | Airoli   | NaviMumbai  | Maharashtra | 4000708 | 2081399882  | Anwar@gmail.com |    NULL | Family     |
+|  2 | Saif      | Sharma   | Thane    | NaviMumbai  | Maharashtra | 4000703 | 2765321371  | saif@gmail.com  |    NULL | Profession |
+|  4 | Priya     | Singh    | Ghansoli | NaviMumbai  | Maharashtra | 400706  | 2514389612  | priya@gmail.com |    NULL | profession |
+|  5 | Rhea      | Kapoor   | Nerul    | NaviMumbai  | Maharashtra | 400709  | 2514389231  | rhea@gmail.com  |    NULL | friends    |
+|  6 | Arya      | Rai      | Mulund   |  Mumbai     | Maharashtra | 500577  | 9167754321  | Arya@gmail.com  |    NULL | family     |
+|  7 | Anwar     | Shaikh   | Airoli   | NaviMumbai  | Maharashtra | 4000708 | 2081399882  | Anwar@gmail.com |       1 | Family     |
+|  8 | Priya     | Singh    | Ghansoli | NaviMumbai  | Maharashtra | 400706  | 2514389612  | priya@gmail.com |       2 | profession |
+|  9 | Rhea      | Kapoor   | Nerul    | NaviMumbai  | Maharashtra | 400709  | 2514389231  | rhea@gmail.com  |       3 | friends    |
+| 10 | Saif      | Sharma   | Thane    | NaviMumbai  | Maharashtra | 4000703 | 2765321371  | saif@gmail.com  |       1 | Profession |
+| 11 | Kunal     | Khair    | Panvel   | Navi Mumbai | Maharashtra | 400704  | 9967324704  | kunal@gmail.com |    NULL | Family     |
+| 12 | Kunal     | Khair    | Panvel   | Navi Mumbai | Maharashtra | 400704  | 9967324704  | kunal@gmail.com |    NULL | friends    |
++----+-----------+----------+----------+-------------+-------------+---------+-------------+-----------------+---------+------------+
+11 rows in set (0.00 sec)
+
 
 
 
