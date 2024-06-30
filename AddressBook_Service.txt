@@ -293,7 +293,44 @@ mysql> Select*from address_book;
 +----+-----------+----------+----------+-------------+-------------+---------+-------------+-----------------+---------+------------+
 11 rows in set (0.00 sec)
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                   UC13 - Ensure all retrieve queries done especially in UC 6, UC 7, UC 8 and UC 10 are working with new table structure
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+mysql> SELECT*FROM address_book WHERE city = "NaviMumbai" ORDER BY firstname;
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+---------+------------+
+| id | firstname | lastname | Address  | City       | state       | zip     | phonenumber | email           | type_id | type       |
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+---------+------------+
+|  1 | Anwar     | Shaikh   | Airoli   | NaviMumbai | Maharashtra | 4000708 | 2081399882  | Anwar@gmail.com |    NULL | Family     |
+|  7 | Anwar     | Shaikh   | Airoli   | NaviMumbai | Maharashtra | 4000708 | 2081399882  | Anwar@gmail.com |       1 | Family     |
+|  4 | Priya     | Singh    | Ghansoli | NaviMumbai | Maharashtra | 400706  | 2514389612  | priya@gmail.com |    NULL | profession |
+|  8 | Priya     | Singh    | Ghansoli | NaviMumbai | Maharashtra | 400706  | 2514389612  | priya@gmail.com |       2 | profession |
+|  5 | Rhea      | Kapoor   | Nerul    | NaviMumbai | Maharashtra | 400709  | 2514389231  | rhea@gmail.com  |    NULL | friends    |
+|  9 | Rhea      | Kapoor   | Nerul    | NaviMumbai | Maharashtra | 400709  | 2514389231  | rhea@gmail.com  |       3 | friends    |
+|  2 | Saif      | Sharma   | Thane    | NaviMumbai | Maharashtra | 4000703 | 2765321371  | saif@gmail.com  |    NULL | Profession |
+| 10 | Saif      | Sharma   | Thane    | NaviMumbai | Maharashtra | 4000703 | 2765321371  | saif@gmail.com  |       1 | Profession |
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+---------+------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT city,state, COUNT(*) AS Address_Count FROM address_book GROUP BY city,state;
++-------------+-------------+---------------+
+| city        | state       | Address_Count |
++-------------+-------------+---------------+
+| NaviMumbai  | Maharashtra |             8 |
+|  Mumbai     | Maharashtra |             1 |
+| Navi Mumbai | Maharashtra |             2 |
++-------------+-------------+---------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT type,COUNT(type) FROM address_book GROUP BY type;
++------------+-------------+
+| type       | COUNT(type) |
++------------+-------------+
+| Family     |           4 |
+| friends    |           3 |
+| Profession |           4 |
++------------+-------------+
+3 rows in set (0.00 sec)
 
 
 
