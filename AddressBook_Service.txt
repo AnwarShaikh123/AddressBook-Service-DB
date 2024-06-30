@@ -179,4 +179,74 @@ mysql> SELECT * FROM address_book WHERE city = "NaviMumbai" ORDER BY firstname;
 +----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+
 4 rows in set (0.00 sec)
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                           UC9 - Ability to identify each Address Book with name and Type
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mysql> CREATE TABLE addressbook_type
+    -> (type_id VARCHAR(255) PRIMARY KEY,
+    -> type_name VARCHAR(255) NOT NULL);
+Query OK, 0 rows affected (0.56 sec)
+
+mysql> INSERT INTO addressbook_type(type_id, type_name) VALUES
+    -> ('Family', 'myfamily'),
+    -> ('Friends','myfriends'),
+    -> ('Profession','myprofession');
+Query OK, 3 rows affected (0.13 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>  select * from addressbook_type;
++------------+--------------+
+| type_id    | type_name    |
++------------+--------------+
+| Family     | myfamily     |
+| Friends    | myfriends    |
+| Profession | myprofession |
++------------+--------------+
+3 rows in set (0.00 sec)
+mysql> ALTER TABLE address_book
+    -> ADD COLUMN type VARCHAR(255),
+    -> ADD FOREIGN KEY (type) REFERENCES addressbook_type(type_id);
+Query OK, 9 rows affected (2.83 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> UPDATE address_book SET type = "Profession" WHERE first_name = "Saif";
+ERROR 1054 (42S22): Unknown column 'first_name' in 'where clause'
+mysql> UPDATE address_book SET type = "Profession" WHERE firstname = "Saif";
+Query OK, 2 rows affected (0.08 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> UPDATE address_book SET type = "Family" WHERE firstname = "Anwar";
+Query OK, 2 rows affected (0.09 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> UPDATE address_book SET type = "profession" WHERE firstname = "priya";
+Query OK, 2 rows affected (0.07 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> UPDATE address_book SET type = "friends" WHERE firstname = "Rhea";
+Query OK, 2 rows affected (0.45 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> UPDATE address_book SET type = "family" WHERE firstname = "Arya";
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from address_book;
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+---------+------------+
+| id | firstname | lastname | Address  | City       | state       | zip     | phonenumber | email           | type_id | type       |
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+---------+------------+
+|  1 | Anwar     | Shaikh   | Airoli   | NaviMumbai | Maharashtra | 4000708 | 2081399882  | Anwar@gmail.com |    NULL | Family     |
+|  2 | Saif      | Sharma   | Thane    | NaviMumbai | Maharashtra | 4000703 | 2765321371  | saif@gmail.com  |    NULL | Profession |
+|  4 | Priya     | Singh    | Ghansoli | NaviMumbai | Maharashtra | 400706  | 2514389612  | priya@gmail.com |    NULL | profession |
+|  5 | Rhea      | Kapoor   | Nerul    | NaviMumbai | Maharashtra | 400709  | 2514389231  | rhea@gmail.com  |    NULL | friends    |
+|  6 | Arya      | Rai      | Mulund   |  Mumbai    | Maharashtra | 500577  | 9167754321  | Arya@gmail.com  |    NULL | family     |
+|  7 | Anwar     | Shaikh   | Airoli   | NaviMumbai | Maharashtra | 4000708 | 2081399882  | Anwar@gmail.com |       1 | Family     |
+|  8 | Priya     | Singh    | Ghansoli | NaviMumbai | Maharashtra | 400706  | 2514389612  | priya@gmail.com |       2 | profession |
+|  9 | Rhea      | Kapoor   | Nerul    | NaviMumbai | Maharashtra | 400709  | 2514389231  | rhea@gmail.com  |       3 | friends    |
+| 10 | Saif      | Sharma   | Thane    | NaviMumbai | Maharashtra | 4000703 | 2765321371  | saif@gmail.com  |       1 | Profession |
++----+-----------+----------+----------+------------+-------------+---------+-------------+-----------------+---------+------------+
+9 rows in set (0.00 sec)
+
+
 
